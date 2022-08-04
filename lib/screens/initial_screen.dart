@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_alura/components/task.dart';
+import 'package:projeto_alura/screens/form/form.dart';
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({Key? key}) : super(key: key);
@@ -23,32 +24,32 @@ class _InitialScreenState extends State<InitialScreen> {
         opacity: (opacidade ? 1 : 0),
         child: ListView(
           children: [
-            const Task(
+            Task(
               'HTML',
               'assets/images/html5.png',
               1,
             ),
-            const Task(
+            Task(
               'Javascript',
               'assets/images/js.png',
               2,
             ),
-            const Task(
+            Task(
               'Flutter',
               'assets/images/flutter.png',
               2,
             ),
-            const Task(
+            Task(
               'Java',
               'assets/images/java.png',
               5,
             ),
-            const Task(
+            Task(
               ' React ',
               'assets/images/react.png',
               3,
             ),
-            const Task(
+            Task(
               ' ASP.Net ',
               'assets/images/net.png',
               4,
@@ -62,12 +63,25 @@ class _InitialScreenState extends State<InitialScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            opacidade = !opacidade;
-          });
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (contextNew) => FormScreen(
+                taskContext: context,
+              ),
+            ),
+          );
         },
-        child: const Icon(Icons.remove_red_eye),
+        child: const Icon(Icons.add),
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     setState(() {
+      //       opacidade = !opacidade;
+      //     });
+      //   },
+      //   child: const Icon(Icons.remove_red_eye),
+      // ),
     );
   }
 }
